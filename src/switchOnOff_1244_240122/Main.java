@@ -1,4 +1,4 @@
-package switchOnOff;
+package switchOnOff_1244_240122;
 
 import java.util.Scanner;
 

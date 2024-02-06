@@ -14,16 +14,12 @@ public class Main {
 		int Q = sc.nextInt();
 		int time = sc.nextInt();
 		
-		int pDirec = 1;
-		int qDirec = 1;
-		for (int i = 0; i < time; i++) {
-			if (P == 0 || P == W) pDirec *= -1;
-			if (Q == 0 || Q == H) qDirec *= -1;
-			P += pDirec;
-			Q += qDirec;
-		}
-		
-		
+		int x = time-(W-P);
+		int y = time-(H-Q);
+		if ((x/W)%2 == 0) P = W - (x%W);
+		else P = 0 + (x%W);
+		if ((y/H)%2 == 0) Q = H - (y%H);
+		else Q = 0 + (y%H);
 		
 		System.out.println(P+" "+Q);
 		sc.close();

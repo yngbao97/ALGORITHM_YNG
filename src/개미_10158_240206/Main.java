@@ -14,14 +14,16 @@ public class Main {
 		int Q = sc.nextInt();
 		int time = sc.nextInt();
 		
-		int x = time-(W-P);
-		int y = time-(H-Q);
-		if ((x/W)%2 == 0) P = W - (x%W);
-		else P = 0 + (x%W);
-		if ((y/H)%2 == 0) Q = H - (y%H);
-		else Q = 0 + (y%H);
+		/*
+		 * 처음 위치에서 이동시간만큼 더한뒤 0으로 돌아오는 간격(2W)으로 나누어 나머지를 구한다.
+		 * 나머지가 W보다 큰 경우 범위를 벗어나므로, 2W에서 나머지를 빼주면 반대끝 지점에서 나머지만큼 돌아온 지점이 된다.
+		 */
+		int x = (P + time) % (2 * W);
+		int y = (Q + time) % (2 * H);
+		if (x > W) x = (2 * W) - x;
+		if (y > H) y = (2 * H) - y;
 		
-		System.out.println(P+" "+Q);
+		System.out.println(x+" "+y);
 		sc.close();
 	}
 }

@@ -25,9 +25,13 @@ public class Main2 {
 		}
 		
 		// 가장 위에 있는 종이부터 종의의 면적을 순회하며 덮여있지 않은 부분의 면적만 더한다.
+		// 인덱스 문제
 		for (int i = N-1; i >= 0; i--) {
-			for (int r = paper[i][0]+1; r <= paper[i][0]+paper[i][2]; r++) {
-				for (int c = paper[i][1]+1; c <= paper[i][1]+paper[i][3]; c++) {
+//			틀린거
+//			for (int r = paper[i][0]+1; r <= paper[i][0]+paper[i][2]; r++) {
+//				for (int c = paper[i][1]+1; c <= paper[i][1]+paper[i][3]; c++) {
+			for (int r = paper[i][0]; r < paper[i][0]+paper[i][2]; r++) {
+				for (int c = paper[i][1]; c < paper[i][1]+paper[i][3]; c++) {
 					if (!isCovered[r][c]) {
 						paper[i][4]++;
 						isCovered[r][c] = true;

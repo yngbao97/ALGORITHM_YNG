@@ -14,6 +14,8 @@ public class Main {
 		int cnt = 1;
 		int answer = 1;
 		
+		// 각 겹마다 수의 범위를 두고 그 안에 N이 포함되면 종료
+		// 1로부터 몇번째 바깥인지만 찾으면 그게 최소 이동 수
 		while(N != 1) {
 			if (N > num && N <= num+(6*cnt)) {
 				answer = cnt+1;

@@ -1,4 +1,4 @@
-package 직사각형_2527_240212;
+package 직사각형_2527_240212;
 
 import java.util.Scanner;
 

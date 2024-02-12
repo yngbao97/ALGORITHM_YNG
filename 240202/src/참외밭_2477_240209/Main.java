@@ -1,4 +1,4 @@
-package 참외밭_2477_240209;
+package 참외밭_2477_240209;
 
 import java.util.Scanner;
 

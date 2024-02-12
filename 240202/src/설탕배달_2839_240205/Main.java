@@ -1,4 +1,4 @@
-package 설탕배달_2839_240205;
+package 설탕배달_2839_240205;
 
 import java.util.Scanner;
 

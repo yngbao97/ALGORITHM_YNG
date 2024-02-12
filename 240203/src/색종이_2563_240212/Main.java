@@ -1,4 +1,4 @@
-package 색종이_2563_240212;
+package 색종이_2563_240212;
 
 import java.util.Scanner;
 

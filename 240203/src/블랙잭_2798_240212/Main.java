@@ -1,4 +1,4 @@
-package 블랙잭_2798_240212;
+package 블랙잭_2798_240212;
 
 import java.util.Scanner;
 

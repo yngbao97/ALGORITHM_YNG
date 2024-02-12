@@ -1,4 +1,4 @@
-package 색종이_10163_240207;
+package 색종이_10163_240207;
 
 import java.io.BufferedReader;
 import java.io.IOException;

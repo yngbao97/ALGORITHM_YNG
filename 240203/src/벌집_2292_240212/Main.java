@@ -1,4 +1,4 @@
-package 벌집_2292_240212;
+package 벌집_2292_240212;
 
 import java.util.Scanner;
 

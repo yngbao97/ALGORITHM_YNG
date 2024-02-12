@@ -1,4 +1,4 @@
-package 개미_10158_240206;
+package 개미_10158_240206;
 
 import java.util.Scanner;
 

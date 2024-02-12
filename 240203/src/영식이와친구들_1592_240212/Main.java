@@ -1,4 +1,4 @@
-package 영식이와친구들_1592_240212;
+package 영식이와친구들_1592_240212;
 
 import java.util.Scanner;
 

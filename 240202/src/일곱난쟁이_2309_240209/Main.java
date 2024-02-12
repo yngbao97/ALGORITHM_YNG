@@ -1,4 +1,4 @@
-package 일곱난쟁이_2309_240209;
+package 일곱난쟁이_2309_240209;
 
 import java.util.Arrays;
 import java.util.Scanner;

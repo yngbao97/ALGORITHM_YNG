@@ -26,7 +26,7 @@ for i in range(cnt):
     os.system('touch Main.java')
     f=open('Main.java','w', encoding='utf-8')
     f.write(f'package {packages[i]};\n\n')
-    f.write('public class Solution {\n\n}')
+    f.write('public class Main {\n\n}')
     f.close()
     ## os.system('touch input.txt')
     

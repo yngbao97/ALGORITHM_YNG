@@ -39,5 +39,5 @@ for t in total:
         os.system(f'mkdir 2403{day}')
         os.chdir(f'2403{day}')
         
-    os.system(f'touch .gitkeep README.md')
+    os.system(f'touch .gitkeep')
     os.chdir('..')

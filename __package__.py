@@ -11,6 +11,18 @@ sys.stdin = open ('input.txt', 'r', encoding='UTF-8')
                                   boj_1244_스위치켜고끄기
 '''
 
+def touch_file(package_name: str):
+    
+    platform = package_name.split('_')
+    if (platform[0] == 'boj' | platform[0] == 'jungol'):
+        class_name = "Main"
+    elif (platform[0] == 'swea' | platform[0] == 'prog'):
+        class_name = "Solution"
+
+    f=open(f'{class_name}.java','w', encoding='utf-8')
+    f.write(f'package {packages[i]};\n\n')
+    f.write(f'public class {class_name} ' + '{\n\n}')
+    f.close()
 
 day = input()
 cnt = int(input())
@@ -23,12 +35,7 @@ os.chdir(f'{day}/src')
 for i in range(cnt):
     os.system(f'mkdir {packages[i]}')   
     os.chdir(f'{packages[i]}')
-    os.system('touch Main.java')
-    f=open('Main.java','w', encoding='utf-8')
-    f.write(f'package {packages[i]};\n\n')
-    f.write('public class Main {\n\n}')
-    f.close()
-    ## os.system('touch input.txt')
+    touch_file(packages[i])
+    os.system('touch input.txt')
     
     os.chdir('..')
-

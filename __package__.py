@@ -14,13 +14,13 @@ sys.stdin = open ('input.txt', 'r', encoding='UTF-8')
 def touch_file(package_name: str):
     
     platform = package_name.split('_')
-    if (platform[0] == 'boj' | platform[0] == 'jungol'):
+    if (platform[0] == 'boj' or platform[0] == 'jungol'):
         class_name = "Main"
-    elif (platform[0] == 'swea' | platform[0] == 'prog'):
+    elif (platform[0] == 'swea' or platform[0] == 'prog'):
         class_name = "Solution"
 
     f=open(f'{class_name}.java','w', encoding='utf-8')
-    f.write(f'package {packages[i]};\n\n')
+    f.write(f'package {package_name};\n\n')
     f.write(f'public class {class_name} ' + '{\n\n}')
     f.close()
 
@@ -33,7 +33,7 @@ packages = [str(input()) for _ in range(cnt)]
 os.chdir(f'{day}/src')
 
 for i in range(cnt):
-    os.system(f'mkdir {packages[i]}')   
+    os.makedirs(packages[i], exist_ok=True)   
     os.chdir(f'{packages[i]}')
     touch_file(packages[i])
     os.system('touch input.txt')

@@ -13,6 +13,9 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(input," ");
 		
 		int answer = st.countTokens();
+		
+		
+//		Boolean test;
 
 		System.out.println(answer);
 

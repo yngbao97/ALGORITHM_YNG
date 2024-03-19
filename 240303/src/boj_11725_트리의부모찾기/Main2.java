@@ -4,14 +4,14 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
-// 메모리 초과
+// 硫붾え由� 珥덇낵
 public class Main2 {
 
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int N = sc.nextInt();		// 노드의 개수
+		int N = sc.nextInt();		// �끂�뱶�쓽 媛쒖닔
 		
 		boolean[] visited = new boolean[N+1];
 		boolean[][] connection = new boolean[N+1][N+1];

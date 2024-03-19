@@ -12,23 +12,23 @@ public class Main {
 		
 		Scanner sc = new Scanner(System.in);
 		
-		int N = sc.nextInt();		// 노드의 개수
+		int N = sc.nextInt();		// �끂�뱶�쓽 媛쒖닔
 		
-		// 각 노드의 연결 구조, 인접행렬과 흡사함
+		// 媛� �끂�뱶�쓽 �뿰寃� 援ъ“, �씤�젒�뻾�젹怨� �씉�궗�븿
 		List<Integer>[] nodes = new List[N+1];
 		
-		// 노드 방문 여부 체크
+		// �끂�뱶 諛⑸Ц �뿬遺� 泥댄겕
 		boolean[] visited = new boolean[N+1];
 		
-		// 각 노드의 부모 노드 정보
+		// 媛� �끂�뱶�쓽 遺�紐� �끂�뱶 �젙蹂�
 		int[] parentMap = new int[N+1];
 		
-		// 입력
+		// �엯�젰
 		for (int i = 0; i < N-1; i++) {
 			int num1 = sc.nextInt();
 			int num2 = sc.nextInt();
 			
-			// 서로의 연결 노드 리스트에 추가, 아직 누가 부모인지 모르니까 공평하게
+			// �꽌濡쒖쓽 �뿰寃� �끂�뱶 由ъ뒪�듃�뿉 異붽�, �븘吏� �늻媛� 遺�紐⑥씤吏� 紐⑤Ⅴ�땲源� 怨듯룊�븯寃�
 			if (nodes[num1] == null) {
 				nodes[num1] = new ArrayList<>();
 			}
@@ -39,39 +39,39 @@ public class Main {
 			nodes[num2].add(num1);
 		}
 		
-		// bfs 탐색을 위한 큐
+		// bfs �깘�깋�쓣 �쐞�븳 �걧
 		Queue<Integer> queue = new LinkedList<>();
 		
-		// 루트 1은 넣고 시작함
+		// 猷⑦듃 1�� �꽔怨� �떆�옉�븿
 		queue.add(1);
 		visited[1] = true;
 		
-		// 큐가 빌 때까지 반복
+		// �걧媛� 鍮� �븣源뚯� 諛섎났
 		while (!queue.isEmpty()) {
 			
-			// 값 하나 뽑아서
+			// 媛� �븯�굹 戮묒븘�꽌
 			int nodeNum = queue.poll();
 			
-			// 해당하는 노드에 연결된 노드들을 큐에 추가, 단 방문하지 않은 곳만
+			// �빐�떦�븯�뒗 �끂�뱶�뿉 �뿰寃곕맂 �끂�뱶�뱾�쓣 �걧�뿉 異붽�, �떒 諛⑸Ц�븯吏� �븡�� 怨노쭔
 			if (nodes[nodeNum] != null) {
 				for (int i : nodes[nodeNum]) {
 					if (!visited[i]) {
 						queue.add(i);
 						visited[i] = true;
 						
-						// 연결된 노드들의 부모 노드는 현재 노드이므로, 부모맵에 저장
+						// �뿰寃곕맂 �끂�뱶�뱾�쓽 遺�紐� �끂�뱶�뒗 �쁽�옱 �끂�뱶�씠誘�濡�, 遺�紐⑤㏊�뿉 ���옣
 						parentMap[i] = nodeNum;
 					}
 				}
 			}
 		}
 		
-		// 부모맵 2번부터 출력
+		// 遺�紐⑤㏊ 2踰덈��꽣 異쒕젰
 		for (int i = 2; i <= N; i++) {
 			System.out.println(parentMap[i]);
 		}
 		
-		// 문단속
+		// 臾몃떒�냽
 		sc.close();
 	}
 

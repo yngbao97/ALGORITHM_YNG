@@ -1,4 +1,4 @@
-package boj_2164_Ä«µå2;
+package boj_2164_ì¹´ë“œ2;
 
 import java.util.LinkedList;
 import java.util.Queue;

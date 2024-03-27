@@ -1,5 +1,6 @@
-package boj_12100_2048;
+package boj_15684_사다리조작;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -38,6 +39,7 @@ public class Main {
 			}
 			System.out.println();
 		}
+		System.out.println();
 		
 		for (int i = 0; i <= 3; i++) {
 			horCnt = i;
@@ -45,6 +47,8 @@ public class Main {
 			colComb(1, 0);
 		}
 		
+		if (answer == Integer.MAX_VALUE) answer = -1;
+
 		System.out.println(answer);
 		
 		sc.close();
@@ -65,31 +69,35 @@ public class Main {
 	}
 
 	private static void rowComb(int idx, int cnt) {
-		if (cnt >= sel.length) {
+		if (cnt >= horCnt) {
 			
+			System.out.println(Arrays.toString(sel));
 			for(int i = 0; i <= H+1; i++) {
 				for (int j = 0; j <= N+1; j++) {
 					System.out.print(ladder[i][j] + " ");
 				}
 				System.out.println();
 			}
+			System.out.println();
 			
-			if (isCorrect() && sel.length < answer) {
-				answer = sel.length;
+			if (isCorrect() && horCnt < answer) {
+				answer = horCnt;
+				System.out.println(answer);
+				System.out.println(horCnt);
 			}
 			return;
 		}
 		
 		if (idx > H) return;
 		
-		int row = sel[cnt];
-		for (int i = idx; i < H; i++) {
-			if (ladder[row][i] == 0 && ladder[row][i+1] == 0) {
-				ladder[row][i] = 1;
-				ladder[row][i+1] = 2;
+		int col = sel[cnt];
+		for (int i = idx; i <= H; i++) {
+			if (ladder[i][col] == 0 && ladder[i][col+1] == 0) {
+				ladder[i][col] = 1;
+				ladder[i][col+1] = 2;
 				rowComb(i+1, cnt+1);
-				ladder[row][i] = 0;
-				ladder[row][i+1] = 0;
+				ladder[i][col] = 0;
+				ladder[i][col+1] = 0;
 			}
 		}
 	}
@@ -100,15 +108,17 @@ public class Main {
 			int start = c;
 			
 			int row = 1;
-			int col = 1;
+			int col = c;
 			
 			while (row <= H) {
 				if (ladder[row][col] == 0) {
-					row += 1;
+					row++;
 				} else if (ladder[row][col] == 1) {
-					col -= 1;
+					col++;
+					row++;
 				} else {
-					col += 1;
+					col--;
+					row++;
 				}
 			}
 			

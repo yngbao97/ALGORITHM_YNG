@@ -16,29 +16,18 @@ public class test {
 		Objects.equals(args, t);
 		
 		String str1 = "육예진";
-		String str2 = "육예진";
-		String str3 = new String("육예진");
-		
-		str1.equals(str2);
-		
-		Integer dd = 34;
-		Integer ss = 33;
-		dd.equals(ss);
+		String str2 = new String("육예진");
 		
 		List<String> list1 = new ArrayList<>();
-		list1.add(str2);
+		list1.add(str1);
 		
-		List<Integer> list2 = new ArrayList<>();
-		
-		list1.contains(list2);
-		int[] arr = new int[3];
+		System.out.println(list1.contains(str2));
 		
 		Map<String, String> upper = new HashMap<>();
 		upper.put("a", "A");
 		upper.equals(upper);
-		list1.equals(list2);
+		upper.containsKey(upper);
 		
-		System.out.println(list1.contains(str3));
 	}
 
 }

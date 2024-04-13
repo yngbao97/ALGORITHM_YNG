@@ -2,7 +2,7 @@ package boj_10942_팰린드롬;
 
 import java.util.Scanner;
 
-public class Main2 {
+public class Main_Fail {
 
 	static int N;
 	static int[] nums;

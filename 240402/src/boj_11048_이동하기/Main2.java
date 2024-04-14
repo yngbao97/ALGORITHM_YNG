@@ -3,7 +3,7 @@ package boj_11048_이동하기;
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+public class Main2 {
 
 	public static void main(String[] args) {
 
@@ -11,11 +11,10 @@ public class Main {
 		
 		int N = sc.nextInt();
 		int M = sc.nextInt();
-		
 		int[][] maze = new int[N+1][M+1];
 		int[][] dp = new int[N+1][M+1];
 		
-		for (int i = 1; i <= N; i++) {
+		for (int i = 1 ; i <= N; i++) {
 			for (int j = 1; j <= M; j++) {
 				maze[i][j] = sc.nextInt();
 			}
@@ -30,10 +29,12 @@ public class Main {
 		System.out.println(dp[N][M]);
 		sc.close();
 	}
-}
 
-//private static void print(int[][] maze) {
-//	for (int i = 0; i < maze.length; i++) {
-//		System.out.println(Arrays.toString(maze[i]));
-//	}
-//}
+	private static void print(int[][] arr) {
+
+		for (int i = 0; i < arr.length; i++) {
+			System.out.println(Arrays.toString(arr[i]));
+		}
+	}
+
+}

@@ -8,72 +8,64 @@ public class Main {
 	
 	static int[] dr = {-1, 0, 1, 0};
 	static int[] dc = {0, 1, 0, -1};
-
-	static int N;
-	static int M;
-	static int[][] maze;
-	static boolean[][] visited;
+	
 	public static void main(String[] args) {
 		
 		Scanner sc = new Scanner(System.in);
 		
 		String[] input = sc.nextLine().split(" ");
-		N = Integer.parseInt(input[0]);
-		M = Integer.parseInt(input[1]);
+		int N = Integer.parseInt(input[0]);
+		int M = Integer.parseInt(input[1]);
 		
-		maze = new int[N][M];
-		visited = new boolean[N][M];
+		int[][] maze = new int[N+2][M+2];
 		
-		for (int i = 0; i < N; i++) {
+		for (int i = 1; i <= N; i++) {
 			char[] tmp = sc.nextLine().toCharArray();
-			for (int j = 0; j < M; j++) {
-				maze[i][j] = tmp[j] - '0';
+			for (int j = 1; j <= M; j++) {
+				maze[i][j] = tmp[j-1] - '0';
 			}
 		}
 		
-		int answer = bfs();
+		int depth = 1;
+		
+		Queue<int[]> bfs = new LinkedList<>();
+		boolean[][] visited = new boolean[N+2][M+2];
+		
+		bfs.add(new int[] {1, 1});
+		visited[1][1] = true;
+		int cnt = 1; 
+		int answer = 0;
+		
+		while (!bfs.isEmpty()) {
+			
+			if (cnt == 0) {
+				cnt = bfs.size();
+				depth++;
+			}
+			
+			for (int i = 0; i < cnt; i++) {
+				int[] curr = bfs.poll();
+				cnt--;
+				
+				if (curr[0] == N && curr[1] == M) {
+					answer = depth;
+					break;
+				}
+				
+				for (int d = 0; d < 4; d++) {
+					int nr = curr[0] + dr[d];
+					int nc = curr[1] + dc[d];
+					
+					if (maze[nr][nc] == 1 && !visited[nr][nc]) {
+						bfs.add(new int[] {nr, nc});
+						visited[nr][nc] = true;
+					}
+				}
+			}
+		}
 		
 		System.out.println(answer);
 		sc.close();
 	}
 	
-	private static int bfs() {
-		int dist = 1;
-		int size = 0;
-		Queue<Integer> queue = new LinkedList<>();
-		queue.add(0);
-		size++;
-		visited[0][0] = true;
-		
-		out: while (!queue.isEmpty()) {
-			
-			if (size == 0) {
-				size = queue.size();
-			}
-			dist++;
-			
-			int cnt = size;
-			for (int i = 0; i < cnt; i++) {
-				int tmp = queue.poll();
-				size--;
-				
-				int r = tmp / M;
-				int c = tmp % M;
-				
-				for (int d = 0; d < 4; d++) {
-					int nr = r + dr[d];
-					int nc = c + dc[d];
-					
-					if (nr >= 0 && nr < N && nc >= 0 && nc < M && 
-							maze[nr][nc] == 1 && !visited[nr][nc]) {
-						int next = nr*M+nc;
-						queue.add(next);
-						visited[nr][nc] = true;
-						if (next == N*M-1) break out;
-					}
-				}
-			}
-		}
-		return dist;
-	}
 }

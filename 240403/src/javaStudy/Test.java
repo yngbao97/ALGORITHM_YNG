@@ -6,7 +6,7 @@ import static javaStudy.Numbers.*;
 public class Test {
 	public static void main(String[] args) {
 		
-		int a = ONE;
+		final int a;
 
 	}
 }

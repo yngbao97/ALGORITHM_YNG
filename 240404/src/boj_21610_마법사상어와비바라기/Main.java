@@ -1,3 +1,13 @@
+/*
+* 설계 : 5분
+* 풀이 : 55분
+*
+* - 그냥 문제에서 시키는대로 함
+* - 구름 생성 위치를 Cloud 클래스로 List에 저장해서 하나씩 이동했다.
+* - % 연산으로 이동 시 끝과 끝이 연결되도록 했다. (스피드에 먼저 %연산을 해서 인덱스가 마이너스로 가지 않도록하기)
+* - 구름 이동 후 2. 바구니 물 증가시 changed 배열에 체크해서 새구름 생성시 중복되지 않도록 했다.
+*/
+
 package boj_21610_마법사상어와비바라기;
 
 import java.util.ArrayList;
@@ -8,31 +18,32 @@ public class Main {
 
 	static int[] dr = {0, -1, -1, -1, 0, 1, 1, 1};
 	static int[] dc = {-1, -1, 0, 1, 1, 1, 0, -1};
-	static int N;
-	static int[][] field;
-	static boolean[][] changed;
-	static int[][] order;
+
 	public static void main(String[] args) {
 
 		Scanner sc = new Scanner(System.in);
 		
-		N = sc.nextInt();
+		int N = sc.nextInt();
 		int M = sc.nextInt();
-		field = new int[N][N];
+		int[][] field = new int[N][N];
 		
+		// 필드 각 바구니 물양 입력
 		for (int i = 0; i < N; i++) {
 			for (int j = 0; j < N; j++) {
 				field[i][j] = sc.nextInt();
 			}
 		}
 		
-		order = new int[M][];
+		// 주문 입력(방향, 속도)
+		int[][] order = new int[M][];
 		for (int i = 0; i < M; i++) {
 			order[i] = new int[] {sc.nextInt()-1, sc.nextInt()};
 		}
 		
+		// 구름 리스트
 		List<Cloud> clouds = new ArrayList<>();
 		
+		// 구름 리스트 초기화
 		clouds.add(new Cloud(N-1, 0));
 		clouds.add(new Cloud(N-1, 1));
 		clouds.add(new Cloud(N-2, 0));
@@ -40,7 +51,7 @@ public class Main {
 		
 		// 진행할 주문만큼 반복
 		for (int i = 0; i < M; i++) {
-			changed = new boolean[N][N];
+			boolean[][] changed = new boolean[N][N];
 			
 			// 1. 구름 이동
 			int direc = order[i][0];

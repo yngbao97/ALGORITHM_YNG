@@ -11,10 +11,10 @@ exams = ['IM', 'IM_prep', 'A', 'A_prep', 'QUEUE', 'STACK', 'LINKED_LIST', 'TREE'
 events = ['NY1', 'NY2', 'NY3', 'NY4', 'Independence_Movement_Day_0301']
 
 # practice, 26 days 
-days = [i  for i in range(2, 5)] 
+weeks = [i  for i in range(1, 6)] 
 
 # total = exams + events + days
-total = days
+total = weeks
 
 # print(total) # double check
 
@@ -36,8 +36,8 @@ for t in total:
         else:
             day = str(t)
             
-        os.system(f'mkdir 2404{day}')
-        os.chdir(f'2404{day}')
+        os.system(f'mkdir 2405{day}')
+        os.chdir(f'2405{day}')
         
     os.system(f'touch .gitkeep')
     os.chdir('..')

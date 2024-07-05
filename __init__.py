@@ -36,8 +36,8 @@ for t in total:
         else:
             day = str(t)
             
-        os.system(f'mkdir 2405{day}')
-        os.chdir(f'2405{day}')
+        os.system(f'mkdir 2407{day}')
+        os.chdir(f'2407{day}')
         
     os.system(f'touch .gitkeep')
     os.chdir('..')

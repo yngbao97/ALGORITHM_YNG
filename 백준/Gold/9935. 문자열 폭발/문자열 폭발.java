@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.Deque;
 import java.util.LinkedList;
 
@@ -25,10 +24,6 @@ public class Main {
 			
 			dq.addLast(input[i]);
 			
-//			System.out.println("----전----");
-//			System.out.println("idx: "+ idx);
-//			System.out.println("bombIdx: "+ bombIdx);
-			
 			if (input[i] == bomb[bombIdx]) dp[idx++] = bombIdx++;
 			else {
 				bombIdx = 0;
@@ -37,21 +32,13 @@ public class Main {
 			}
 			
 			if (bombIdx == N) {
-//				System.out.println("----폭발 전----");
-//				System.out.println("idx: "+ idx);
-//				System.out.println("bombIdx: "+ bombIdx);
 				
 				for (int b = 0; b < N; b++) dq.pollLast();
 				idx -= N;
 				if (idx > 0) bombIdx = dp[idx-1] + 1;
 				else bombIdx = 0;
 				
-//				System.out.println("----폭발 후----");
-//				System.out.println("idx: "+ idx);
-//				System.out.println("bombIdx: "+ bombIdx);
 			}
-			
-//			System.out.println(Arrays.toString(dp));
 		}
 		
 		StringBuilder sb = new StringBuilder();

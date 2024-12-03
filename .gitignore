@@ -15,6 +15,12 @@ local.properties
 .recommenders
 .classpath
 
+### intellij
+.autocp
+.idea/
+BEAKJOON.iml
+classes/
+
 # External tool builders
 .externalToolBuilders/
 

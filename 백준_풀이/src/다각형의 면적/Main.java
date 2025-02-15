@@ -19,22 +19,21 @@ public class Main {
 		bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int n = Integer.parseInt(br.readLine());
-		long[][] point = new long[n+1][2];
+		long[][] points = new long[n+1][];
 		for (int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine(), " ");
 			long x = Long.parseLong(st.nextToken());
 			long y = Long.parseLong(st.nextToken());
-			point[i] = new long[] {x, y};
+			points[i] = new long[]{x, y};
 		}
-		point[n] = point[0];
+		points[n] = new long[]{points[0][0], points[0][1]};
 
-		double sum = 0;
+		long answer = 0;
 		for (int i = 0; i < n; i++) {
-			sum += point[i][0]*point[i+1][1] - point[i+1][0]*point[i][1];
+			answer += (points[i][0] * points[i+1][1]) - (points[i+1][0] * points[i][1]);
 		}
 
-		double answer = Math.abs(sum) / 2.00;
-		bw.write(String.format("%.1f", answer));
+		bw.write(String.format("%.1f", Math.abs(answer) / 2.00));
 		bw.flush();
 		bw.close();
 		br.close();

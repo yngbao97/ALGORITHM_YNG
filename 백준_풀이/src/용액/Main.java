@@ -19,32 +19,32 @@ public class Main {
 		bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
         int n = Integer.parseInt(br.readLine());
-        int[] nums = new int[n];
+        int[] liq = new int[n];
         st = new StringTokenizer(br.readLine(), " ");
-        for (int i = 0; i < n; i++) {
-            nums[i] = Integer.parseInt(st.nextToken());
-        }
+        for (int i = 0; i < n; i++) liq[i] = Integer.parseInt(st.nextToken());
+        Arrays.sort(liq);
 
-        int a = 0, b = 0;
+        int a = 0;
+        int b = 0;
+
+        int min = Integer.MAX_VALUE;
         int left = 0;
         int right = n-1;
-        int min = 2_000_000_000;
-
-        while (left < right && min > 0) {
-            int tmp = nums[left] + nums[right];
-            int gap = Math.abs(tmp);
-            if (gap < min) {
+        while (left < right) {
+            int sum = liq[left] + liq[right];
+            int gap = Math.abs(sum);
+            if (gap < min || gap == 0) {
+                a = left;
+                b = right;
                 min = gap;
-                a = nums[left];
-                b = nums[right];
+                if (min == 0) break;
             }
-            if (tmp < 0) left++;
-            else if (tmp > 0) right--;
+
+            if (sum > 0) right--;
+            else if (sum < 0) left++;
         }
 
-        StringBuilder sb = new StringBuilder();
-        sb.append(a).append(" ").append(b);
-        bw.write(sb.toString());
+        bw.write(String.valueOf(liq[a]) + " " + String.valueOf(liq[b]));
 		bw.flush();
 		bw.close();
 		br.close();
